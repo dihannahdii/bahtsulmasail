@@ -1,0 +1,9 @@
+{
+  "name": "bahtsul-masail-engine",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["frontend", "backend"],
+  "scripts": {
+    "vercel-build": "cd frontend && npm install && npm run build"
+  }
+}
