@@ -1,18 +1,10 @@
 {
-  "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/.*",
-      "dest": "/index.html"
+      "source": "/api/:path*",
+      "destination": "https://bahtsulmasail-api.vercel.app/api/:path*"
     }
   ],
-  "env": {
-    "VITE_API_URL": "https://bahtsul-masail-api.vercel.app"
-  }
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
 }
