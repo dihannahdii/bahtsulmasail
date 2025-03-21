@@ -1,0 +1,13 @@
+[Unit]
+Description=Bahtsul Masail Backend Service
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory=/path/to/app/backend
+EnvironmentFile=/path/to/app/backend/.env
+ExecStart=/path/to/app/backend/venv/bin/gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
