@@ -11,6 +11,7 @@ import {
   Container
 } from '@mui/material';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const DocumentView = () => {
   const { id } = useParams();
@@ -21,7 +22,7 @@ const DocumentView = () => {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/documents/${id}`);
+        const response = await axios.get(`${API_ENDPOINTS.documents}/${id}`);
         setDocument(response.data);
         setError(null);
       } catch (error) {

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Paper, Typography, Button, LinearProgress, Alert } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const UploadDocument = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const UploadDocument = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:8000/admin/upload', formData, {
+      await axios.post(API_ENDPOINTS.admin.upload, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`

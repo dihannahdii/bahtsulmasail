@@ -5,6 +5,7 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:8000/admin/stats', {
+        const response = await axios.get(API_ENDPOINTS.admin.stats, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setStats(response.data);

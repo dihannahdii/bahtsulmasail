@@ -22,6 +22,7 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const SearchPage = () => {
   const navigate = useNavigate();
@@ -39,8 +40,8 @@ const SearchPage = () => {
     const fetchFilters = async () => {
       try {
         const [madhabsRes, categoriesRes] = await Promise.all([
-          axios.get('http://localhost:8000/api/madhabs'),
-          axios.get('http://localhost:8000/api/categories')
+          axios.get(API_ENDPOINTS.resources.madhabs),
+          axios.get(API_ENDPOINTS.resources.categories)
         ]);
         setMadhabs(madhabsRes.data);
         setCategories(categoriesRes.data);
@@ -55,7 +56,7 @@ const SearchPage = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:8000/api/documents/search', {
+      const response = await axios.post(`${API_ENDPOINTS.search}`, {
         query: searchQuery,
         madhab_ids: selectedMadhabs,
         category_ids: selectedCategories

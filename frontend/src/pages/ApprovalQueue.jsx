@@ -3,6 +3,7 @@ import { Box, Typography, Card, CardContent, Button, Grid, Chip, CircularProgres
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const ApprovalQueue = () => {
   const [documents, setDocuments] = useState([]);
@@ -16,7 +17,7 @@ const ApprovalQueue = () => {
   const fetchPendingDocuments = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8000/admin/pending-documents', {
+      const response = await axios.get(API_ENDPOINTS.admin.pendingDocuments, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDocuments(response.data);
@@ -31,7 +32,7 @@ const ApprovalQueue = () => {
   const handleApproval = async (documentId, approved) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:8000/admin/documents/${documentId}/approve`, 
+      await axios.post(API_ENDPOINTS.admin.approveDocument(documentId), 
         { approved },
         { headers: { Authorization: `Bearer ${token}` }}
       );
