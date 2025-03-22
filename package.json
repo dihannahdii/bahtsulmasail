@@ -4,6 +4,6 @@
   "private": true,
   "workspaces": ["frontend", "backend"],
   "scripts": {
-    "vercel-build": "cd frontend && rm -rf node_modules/ && npm install && ls -la node_modules/.bin && npm run build"
+    "vercel-build": "cd frontend && rm -rf node_modules/ && npm install && node ./node_modules/vite/bin/vite.js build"
   }
 }
