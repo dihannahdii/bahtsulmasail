@@ -5,6 +5,6 @@
       "destination": "https://bahtsulmasail-api.vercel.app/api/:path*"
     }
   ],
-  "buildCommand": "npm run build",
+  "buildCommand": "sudo npm run build",
   "outputDirectory": "dist"
 }
