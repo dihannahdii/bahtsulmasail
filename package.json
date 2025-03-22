@@ -4,6 +4,6 @@
   "private": true,
   "workspaces": ["frontend", "backend"],
   "scripts": {
-    "vercel-build": "cd frontend && rm -rf node_modules/ && npm install && npx --yes vite build"
+    "vercel-build": "cd frontend && rm -rf node_modules/ && npm install && find ./node_modules/.bin -type f -exec chmod +x {} \\; && npx --yes vite build"
   }
 }
